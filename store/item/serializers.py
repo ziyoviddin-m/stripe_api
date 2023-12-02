@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from item.models import Item, Order
+from item.models import Item
 
 
 class ItemSerializer(serializers.ModelSerializer):
@@ -11,9 +11,3 @@ class ItemSerializer(serializers.ModelSerializer):
 
 
 
-# class OrderSerializer(serializers.ModelSerializer):
-#     items = ItemSerializer(many=True, read_only=True)
-
-#     class Meta:
-#         model = Order
-#         fields = ('items',)

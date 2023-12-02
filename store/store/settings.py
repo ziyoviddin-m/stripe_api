@@ -128,6 +128,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ]
+}
 
 # Stripe
 STRIPE_PUBLIC_KEY = 'pk_test_51OHlpoJ9bP7XowAVlpC8szkPztnPyxluOs20hT83pZBYycjx8zYxb1KukhMBOCFrOQAT4DIy1JQqUxyzxzRcZrox004G2lRiac'
