@@ -5,9 +5,39 @@
 
 {% block content %}
     <div>
-        <h2>Name: {{ item.name }}</h2>
-        <p>Description: {{ item.description }}</p>
-        <p>Price: {{ item.price }} ₽</p>
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+        <p>Price: {{ item.price }}</p>
         <button id="buyButton" data-item-id="{{ item.id }}">Buy</button>
     </div>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var buyButton = document.getElementById('buyButton');
+            
+            buyButton.addEventListener('click', function () {
+                var itemId = buyButton.getAttribute('data-item-id');
+                
+                fetch('/buy/' + itemId, {
+                    method: 'GET',
+                })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    return stripe.redirectToCheckout({ sessionId: session.session_id });
+                })
+                .then(function (result) {
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>
+
 {% endblock %}
