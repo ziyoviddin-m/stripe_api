@@ -1,8 +1,11 @@
 Тестовое задание: https://docs.google.com/document/d/1X8yV7jAZWZWhy3NG3m_Yi8lW4Bfa6ZNGDx95pHkE_qc/edit#heading=h.qn8kbnfz56hc
 
 Проект доступен на удаленном сервере:
+
 Для получения session.id - https://stripeapitest.pythonanywhere.com/buy/1 
+
 Информация о выбранном Item и кнопка Buy - https://stripeapitest.pythonanywhere.com/item/1
+
 Модель Order - https://stripeapitest.pythonanywhere.com/order-create/
 
 Установка:
