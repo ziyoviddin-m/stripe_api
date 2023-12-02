@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}Order{% endblock %}
+
+{% block content %}
+
+<h1>Items:</h1>
+
+<form action="{% url 'item:order_create' %}" method="post">
+    {% csrf_token %}
+
+    {% for order in orders %}
+    <h3>{{ order.items.name }} - {{ order.items.price }} ₽</h3>
+    {% endfor %}
+
+    <h2>Total sum: {{ orders.total_sum }} ₽</h2>
+    <a><button type="submit">PLACE AN ORDER</button></a>
+</form>
+
+{% endblock %}

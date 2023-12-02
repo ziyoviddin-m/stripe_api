@@ -15,4 +15,6 @@ urlpatterns = [
 
     path('buy/<int:item_id>', BuyApi.as_view(), name='buy'),
     path('item/<int:item_id>', ItemApi.as_view()),
+
+    path('order-create/', OrderCreateApi.as_view(), name='order_create'),
 ]

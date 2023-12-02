@@ -26,3 +26,17 @@ class Item(models.Model):
             product=stripe_product['id'], unit_amount=round(self.price * 100), currency='rub')
         return stripe_product_price
 
+
+class OrderQuerySet(models.QuerySet):
+    def total_sum(self):
+        return sum(order.items.price for order in self)
+
+
+class Order(models.Model):
+    items = models.ForeignKey(Item, on_delete=models.CASCADE)
+
+    objects = OrderQuerySet.as_manager()
+
+    def __str__(self):
+        return self.items.name
+
