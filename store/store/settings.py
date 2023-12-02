@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DOMAIN_NAME = 'http://127.0.0.1:8000'
+
 
 # Application definition
 
@@ -125,3 +127,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Stripe
+STRIPE_PUBLIC_KEY = 'pk_test_51OHlpoJ9bP7XowAVlpC8szkPztnPyxluOs20hT83pZBYycjx8zYxb1KukhMBOCFrOQAT4DIy1JQqUxyzxzRcZrox004G2lRiac'
+STRIPE_SECRET_KEY = 'sk_test_51OHlpoJ9bP7XowAVNbOAtaSLTzgUQEdATZ1jefZUU0OagnvspZs8vMPTlmGh4uya2exI2n3OzB6aYpapaWpyaWPX00LaiPAM2d'

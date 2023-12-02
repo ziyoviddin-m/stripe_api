@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('pk_test_51OHlpoJ9bP7XowAVlpC8szkPztnPyxluOs20hT83pZBYycjx8zYxb1KukhMBOCFrOQAT4DIy1JQqUxyzxzRcZrox004G2lRiac');
+
+
+        document.getElementById('buyButton').addEventListener('click', function () {
+            // Call your backend to create the Checkout Session
+            fetch('/create-checkout-session/', {
+                method: 'POST',
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(session) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .then(function(result) {
+                // If `redirectToCheckout` fails due to a browser or network error, display the error message
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
