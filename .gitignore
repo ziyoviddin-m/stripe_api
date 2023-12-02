@@ -1,4 +1,5 @@
 venv
+requirements
 *.pyc
 __pycache__/
 **/admin.py

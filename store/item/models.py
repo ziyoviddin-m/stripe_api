@@ -19,7 +19,7 @@ class Item(models.Model):
             stripe_product_price = self.create_stripe_product_price()
             self.stripe_item_price_id = stripe_product_price['id']
         super().save(force_insert, force_update, using, update_fields)
-    
+
     def create_stripe_product_price(self):
         stripe_product = stripe.Product.create(name=self.name)
         stripe_product_price = stripe.Price.create(
