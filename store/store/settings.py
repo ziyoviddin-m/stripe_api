@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+
+# загрузка переменных окружения из файла .env
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -135,5 +140,5 @@ REST_FRAMEWORK = {
 }
 
 # Stripe
-STRIPE_PUBLIC_KEY = 'pk_test_51OHlpoJ9bP7XowAVlpC8szkPztnPyxluOs20hT83pZBYycjx8zYxb1KukhMBOCFrOQAT4DIy1JQqUxyzxzRcZrox004G2lRiac'
-STRIPE_SECRET_KEY = 'sk_test_51OHlpoJ9bP7XowAVNbOAtaSLTzgUQEdATZ1jefZUU0OagnvspZs8vMPTlmGh4uya2exI2n3OzB6aYpapaWpyaWPX00LaiPAM2d'
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
